@@ -13,16 +13,21 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.togetherhealthy.R;
+import com.google.android.material.chip.ChipGroup;
 
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
+    private ChipGroup chipGroup;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         homeViewModel =
                 ViewModelProviders.of(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
+
+        chipGroup = getView().findViewById(R.id.chipGroupMenu);
+
         final TextView textView = root.findViewById(R.id.text_home);
         homeViewModel.getText().observe(this, new Observer<String>() {
             @Override
