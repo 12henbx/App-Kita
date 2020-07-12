@@ -24,6 +24,8 @@ public class HomeFragment extends Fragment {
     private HomeViewModel homeViewModel;
     private ChipGroup chipGroup;
 
+    private String dummyArticle = "Code review is a very important part of the team ‘s life. It is impossible to downplay the significance of this process. This makes a team stronger, a code better and cleaner, and gives growth not only to beginners but also to those who are already experienced. A person who can do a good code review is worth his weight in gold. And always remember that it was a time when none of us reviewed a code or created a Pull Requests, so be patient with those who haven’t done it yet, and the world will get a little better. Peace!";
+
     private RecyclerView articleRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
@@ -41,7 +43,7 @@ public class HomeFragment extends Fragment {
         for (int i =0 ; i < 10 ; i++){
             ArticlePost article = new ArticlePost();
             article.setUsername(String.valueOf(i));
-            article.setArticle("Eyehunt " + i);
+            article.setArticle(dummyArticle + i);
             listOfArticle.add(article);
         }
 
