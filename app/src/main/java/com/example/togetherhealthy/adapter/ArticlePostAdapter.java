@@ -5,10 +5,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.togetherhealthy.R;
 import com.example.togetherhealthy.model.ArticlePost;
+import com.example.togetherhealthy.model.MultiTypePost;
 
 import java.util.List;
 
@@ -23,6 +25,10 @@ public class ArticlePostAdapter extends RecyclerView.Adapter<ArticlePostAdapter.
             super(itemView);
             textViewArticle = (TextView)itemView.findViewById(R.id.tv_article);
         }
+
+        void setArticle(MultiTypePost multiTypePost) {
+            textViewArticle.setText(multiTypePost.getArticle());
+        }
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
@@ -31,6 +37,7 @@ public class ArticlePostAdapter extends RecyclerView.Adapter<ArticlePostAdapter.
     }
 
     // Create new views (invoked by the layout manager)
+    @NonNull
     @Override
     public ArticlePostAdapter.ArticlePostViewHolder onCreateViewHolder(ViewGroup parent,
                                                                 int viewType) {
