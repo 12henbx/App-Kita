@@ -17,7 +17,6 @@ import java.util.List;
 public class ArticlePostAdapter extends RecyclerView.Adapter<ArticlePostAdapter.ArticlePostViewHolder> {
     private List<ArticlePost> dataArticle;
 
-
     public static class ArticlePostViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
         public TextView textViewArticle;
