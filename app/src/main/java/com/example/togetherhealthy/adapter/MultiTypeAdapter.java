@@ -22,6 +22,9 @@ public class MultiTypeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     private Context context;
     private ArrayList<MultiTypePost> multiTypePostArrayList;
+    private OnItemClicked onClick;
+
+    public interface OnItemClicked{ void onItemClick(int position); }
 
     public MultiTypeAdapter(Context context, ArrayList<MultiTypePost> multiTypePostArrayList ){
         this.context = context;
@@ -64,7 +67,7 @@ public class MultiTypeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
         if (getItemViewType(position) == TYPE_ARTICLE) {
             ((ArticlePostAdapter.ArticlePostViewHolder) holder).setArticle(multiTypePostArrayList.get(position));
         } else if (getItemViewType(position) == TYPE_ARTICLE_PHOTO){
@@ -74,10 +77,22 @@ public class MultiTypeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         } else {
             ((StreamAdapter.StreamViewHolder) holder).setStream(multiTypePostArrayList.get(position));
         }
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onClick.onItemClick(position);
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
         return multiTypePostArrayList.size();
     }
+
+    public void setOnClick(OnItemClicked onClick){
+        this.onClick=onClick;
+    }
 }
+
+

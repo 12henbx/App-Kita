@@ -1,16 +1,21 @@
 package com.example.togetherhealthy.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.togetherhealthy.ArticleActivity;
 import com.example.togetherhealthy.R;
 import com.example.togetherhealthy.adapter.ArticlePostAdapter;
 import com.example.togetherhealthy.adapter.ArticleVideoAdapter;
@@ -27,7 +32,7 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTube
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements MultiTypeAdapter.OnItemClicked {
 
     private HomeViewModel homeViewModel;
     private ChipGroup chipGroup;
@@ -36,7 +41,7 @@ public class HomeFragment extends Fragment {
     private String dummyArticle1 = "It is impossible to downplay the significance of this process. This makes a team stronger, a code better and cleaner, and gives growth not only to beginners but also to those who are already experienced. A person who can do a good code review is worth his weight in gold. And always remember that it was a time when none of us reviewed a code or created a Pull Requests, so be patient with those who haven’t done it yet, and the world will get a little better. Peace!";
 
     private RecyclerView articleRecyclerView;
-    private RecyclerView.Adapter mAdapter;
+    private MultiTypeAdapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
 //    List<ArticlePost> listOfArticle;
 //    List<ArticleVideoPost> listOfVideo;
@@ -80,7 +85,7 @@ public class HomeFragment extends Fragment {
 //        mAdapter = new ArticlePostAdapter(listOfArticle);
         mAdapter = new MultiTypeAdapter(getContext(), (ArrayList<MultiTypePost>) listOfPosts);
         articleRecyclerView.setAdapter(mAdapter);
-
+        mAdapter.setOnClick(HomeFragment.this);
 
 
 //        final TextView textView = root.findViewById(R.id.text_home);
@@ -91,5 +96,11 @@ public class HomeFragment extends Fragment {
 //            }
 //        });
         return root;
+    }
+
+
+    @Override
+    public void onItemClick(int position) {
+        startActivity(new Intent(getContext(), ArticleActivity.class));
     }
 }
