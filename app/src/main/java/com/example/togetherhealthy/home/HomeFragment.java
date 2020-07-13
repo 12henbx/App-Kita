@@ -81,8 +81,6 @@ public class HomeFragment extends Fragment {
         mAdapter = new MultiTypeAdapter(getContext(), (ArrayList<MultiTypePost>) listOfPosts);
         articleRecyclerView.setAdapter(mAdapter);
 
-
-
 //        final TextView textView = root.findViewById(R.id.text_home);
 //        homeViewModel.getText().observe(this, new Observer<String>() {
 //            @Override

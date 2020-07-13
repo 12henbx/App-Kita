@@ -80,4 +80,5 @@ public class MultiTypeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     public int getItemCount() {
         return multiTypePostArrayList.size();
     }
+
 }
