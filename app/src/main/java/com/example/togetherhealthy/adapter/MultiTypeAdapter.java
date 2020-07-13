@@ -5,6 +5,7 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,7 +24,7 @@ public class MultiTypeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     private Context context;
     private ArrayList<MultiTypePost> multiTypePostArrayList;
 
-    public MultiTypeAdapter(Context context, ArrayList<MultiTypePost> multiTypePostArrayList ){
+    public MultiTypeAdapter(Context context, ArrayList<MultiTypePost> multiTypePostArrayList){
         this.context = context;
         this.multiTypePostArrayList = multiTypePostArrayList;
     }
@@ -64,7 +65,7 @@ public class MultiTypeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final RecyclerView.ViewHolder holder, int position) {
         if (getItemViewType(position) == TYPE_ARTICLE) {
             ((ArticlePostAdapter.ArticlePostViewHolder) holder).setArticle(multiTypePostArrayList.get(position));
         } else if (getItemViewType(position) == TYPE_ARTICLE_PHOTO){
@@ -74,6 +75,8 @@ public class MultiTypeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         } else {
             ((StreamAdapter.StreamViewHolder) holder).setStream(multiTypePostArrayList.get(position));
         }
+
+
     }
 
     @Override
