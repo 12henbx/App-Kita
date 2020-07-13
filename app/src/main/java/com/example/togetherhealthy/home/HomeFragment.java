@@ -1,9 +1,11 @@
 package com.example.togetherhealthy.home;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -19,6 +21,7 @@ import com.example.togetherhealthy.model.ArticlePost;
 import com.example.togetherhealthy.model.ArticleVideoPost;
 import com.example.togetherhealthy.model.MultiTypePost;
 import com.example.togetherhealthy.model.StreamPost;
+import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
@@ -49,6 +52,30 @@ public class HomeFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_home, container, false);
 
         chipGroup = root.findViewById(R.id.chip_group);
+
+        chipGroup.setOnCheckedChangeListener(new ChipGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(ChipGroup chipGroup, int i) {
+
+                Chip chip = chipGroup.findViewById(i);
+                if (chip != null)
+                    Toast.makeText(getActivity().getApplicationContext(), "Chip is " + chip.getText().toString(), Toast.LENGTH_SHORT).show();
+
+                Log.e("OnCheckedChangeListener", "Called");
+            }
+        });
+
+//        chipGroup.setOnClickListener(new ChipGroup.OnClickListener(){
+//
+//            @Override
+//            public void onClick(View view) {
+//                Chip chip = chipGroup.findViewById(checkedId);
+//                if (chip != null)
+//                    Toast.makeText(getActivity().getApplicationContext(), "Chip is " + chip.getChipText(), Toast.LENGTH_SHORT).show();
+//                System.out.println("test56");
+//            }
+//        });
+
 //        listOfArticle = new ArrayList<ArticlePost>();
 //        listOfVideo = new ArrayList<ArticleVideoPost>();
         listOfPosts = new ArrayList<>();
