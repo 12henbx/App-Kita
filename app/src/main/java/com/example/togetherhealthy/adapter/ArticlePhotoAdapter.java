@@ -1,5 +1,10 @@
 package com.example.togetherhealthy.adapter;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +18,8 @@ import com.example.togetherhealthy.R;
 import com.example.togetherhealthy.model.ArticlePhotoPost;
 import com.example.togetherhealthy.model.MultiTypePost;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 
 public class ArticlePhotoAdapter extends RecyclerView.Adapter<ArticlePhotoAdapter.ArticlePhotoViewHolder> {
@@ -46,7 +53,15 @@ public class ArticlePhotoAdapter extends RecyclerView.Adapter<ArticlePhotoAdapte
 
         void setArticlePhoto(MultiTypePost multiTypePost) {
             textViewArticle.setText(multiTypePost.getArticle());
-            imageView.setImageResource(multiTypePost.getUrl_photo());
+            Uri imageUri = multiTypePost.getUrl_photo();//Uri.parse(multiTypePost.getUrl_photo());
+            Bitmap bitmap;
+            try {
+                System.out.println("tesimage");
+                bitmap = MediaStore.Images.Media.getBitmap(this.imageView.getContext().getContentResolver(), imageUri);
+                imageView.setImageBitmap(bitmap);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

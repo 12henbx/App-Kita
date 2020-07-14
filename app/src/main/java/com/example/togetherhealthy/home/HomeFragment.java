@@ -5,6 +5,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -21,6 +23,7 @@ import com.example.togetherhealthy.model.ArticlePost;
 import com.example.togetherhealthy.model.ArticleVideoPost;
 import com.example.togetherhealthy.model.MultiTypePost;
 import com.example.togetherhealthy.model.StreamPost;
+import com.example.togetherhealthy.notifications.NotificationsViewModel;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
@@ -29,11 +32,13 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTube
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
     private ChipGroup chipGroup;
+    private SearchView searchView;
 
     private String dummyArticle = "Code review is a very important part of the team ‘s life. It is impossible to downplay the significance of this process. This makes a team stronger, a code better and cleaner, and gives growth not only to beginners but also to those who are already experienced. A person who can do a good code review is worth his weight in gold. And always remember that it was a time when none of us reviewed a code or created a Pull Requests, so be patient with those who haven’t done it yet, and the world will get a little better. Peace!";
     private String dummyArticle1 = "It is impossible to downplay the significance of this process. This makes a team stronger, a code better and cleaner, and gives growth not only to beginners but also to those who are already experienced. A person who can do a good code review is worth his weight in gold. And always remember that it was a time when none of us reviewed a code or created a Pull Requests, so be patient with those who haven’t done it yet, and the world will get a little better. Peace!";
@@ -41,9 +46,11 @@ public class HomeFragment extends Fragment {
     private RecyclerView articleRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
-//    List<ArticlePost> listOfArticle;
+
+    public static List<String> listOfArticle;
 //    List<ArticleVideoPost> listOfVideo;
-    List<MultiTypePost> listOfPosts;
+    public static List<MultiTypePost> listOfPosts = new ArrayList<>();
+    public static List<MultiTypePost> items,itemsCopy;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -76,39 +83,19 @@ public class HomeFragment extends Fragment {
 //            }
 //        });
 
-//        listOfArticle = new ArrayList<ArticlePost>();
-//        listOfVideo = new ArrayList<ArticleVideoPost>();
-        listOfPosts = new ArrayList<>();
-
-        for (int i =0 ; i < 10 ; i++){
-            MultiTypePost article = new MultiTypePost();
-
-            article.setUsername(String.valueOf(i));
-            article.setArticle(dummyArticle + i);
-            listOfPosts.add(article);
-        }
-
-        for (int i =0 ; i < 2 ; i++){
-            MultiTypePost articleVideoPost = new MultiTypePost();
-            articleVideoPost.setArticle(dummyArticle1);
-            articleVideoPost.setUsername(String.valueOf(i));
-            articleVideoPost.setUrl_video("l2mI4vL95kU");
-            listOfPosts.add(articleVideoPost);
-        }
-
         articleRecyclerView = (RecyclerView) root.findViewById(R.id.post_recyclerview);
         articleRecyclerView.setHasFixedSize(true);
 
         // use a linear layout manager
         layoutManager = new LinearLayoutManager(this.getContext());
+        ((LinearLayoutManager) layoutManager).setReverseLayout(true);
+        ((LinearLayoutManager) layoutManager).setStackFromEnd(true);
         articleRecyclerView.setLayoutManager(layoutManager);
 
         // specify an adapter (see also next example)
 //        mAdapter = new ArticlePostAdapter(listOfArticle);
         mAdapter = new MultiTypeAdapter(getContext(), (ArrayList<MultiTypePost>) listOfPosts);
         articleRecyclerView.setAdapter(mAdapter);
-
-
 
 //        final TextView textView = root.findViewById(R.id.text_home);
 //        homeViewModel.getText().observe(this, new Observer<String>() {

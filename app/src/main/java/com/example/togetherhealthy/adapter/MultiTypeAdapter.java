@@ -2,6 +2,7 @@ package com.example.togetherhealthy.adapter;
 
 import android.content.Context;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,8 @@ import com.example.togetherhealthy.R;
 import com.example.togetherhealthy.model.MultiTypePost;
 
 import java.util.ArrayList;
+
+import static androidx.constraintlayout.widget.Constraints.TAG;
 
 public class MultiTypeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static int TYPE_ARTICLE = 1;
@@ -51,13 +54,14 @@ public class MultiTypeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     @Override
     public int getItemViewType(int position) {
-        if (multiTypePostArrayList.get(position).getUrl_photo() == 0 && TextUtils.isEmpty(multiTypePostArrayList.get(position).getUrl_video())) {
+        Log.d(TAG, "getItemViewType: " + multiTypePostArrayList.get(position).getUrl_photo());
+        if (multiTypePostArrayList.get(position).getUrl_photo() == null && TextUtils.isEmpty(multiTypePostArrayList.get(position).getUrl_video())) {
             return TYPE_ARTICLE;
         } else if (TextUtils.isEmpty(multiTypePostArrayList.get(position).getUrl_video())){
             return TYPE_ARTICLE_PHOTO;
-        } else if (multiTypePostArrayList.get(position).getUrl_photo() == 0) {
+        } else if (multiTypePostArrayList.get(position).getUrl_photo() == null) {
             return TYPE_ARTICLE_VIDEO;
-        } else if (multiTypePostArrayList.get(position).getUrl_photo() == 0 && multiTypePostArrayList.get(position).getArticle().isEmpty()) {
+        } else if (multiTypePostArrayList.get(position).getUrl_photo() == null && multiTypePostArrayList.get(position).getArticle().isEmpty()) {
             return TYPE_STREAM;
         }
         return 0;
@@ -65,6 +69,8 @@ public class MultiTypeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+        System.out.println("cek item" + getItemViewType(position));
+        Log.d(TAG, "onBindViewHolder: " + getItemViewType(position));
         if (getItemViewType(position) == TYPE_ARTICLE) {
             ((ArticlePostAdapter.ArticlePostViewHolder) holder).setArticle(multiTypePostArrayList.get(position));
         } else if (getItemViewType(position) == TYPE_ARTICLE_PHOTO){

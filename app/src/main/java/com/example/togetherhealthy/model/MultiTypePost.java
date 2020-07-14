@@ -1,10 +1,15 @@
 package com.example.togetherhealthy.model;
 
+import android.net.Uri;
+
 public class MultiTypePost {
     private String username;
     private String article;
-    private int url_photo;
+    private Uri url_photo;
     private String url_video;
+    private String Category;
+    private int voteCount;
+
 
     public String getUsername() {
         return username;
@@ -22,11 +27,11 @@ public class MultiTypePost {
         this.article = article;
     }
 
-    public int getUrl_photo() {
+    public Uri getUrl_photo() {
         return url_photo;
     }
 
-    public void setUrl_photo(int url_photo) {
+    public void setUrl_photo(Uri url_photo) {
         this.url_photo = url_photo;
     }
 
@@ -36,5 +41,21 @@ public class MultiTypePost {
 
     public void setUrl_video(String url_video) {
         this.url_video = url_video;
+    }
+
+    public String getCategory() {
+        return Category;
+    }
+
+    public void setCategory(String category) {
+        Category = category;
+    }
+
+    public int getVoteCount() {
+        return voteCount;
+    }
+
+    public void setVoteCount(int voteCount) {
+        this.voteCount = voteCount;
     }
 }
