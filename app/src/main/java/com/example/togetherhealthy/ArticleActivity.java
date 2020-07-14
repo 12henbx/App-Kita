@@ -61,6 +61,5 @@ public class ArticleActivity extends AppCompatActivity {
 
         adapter = new ArticleCommentAdapter(listComments);
         recyclerView.setAdapter(adapter);
-
     }
 }

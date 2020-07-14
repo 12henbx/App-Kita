@@ -41,7 +41,9 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.Abs
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Vector;
 
 import static android.content.ContentValues.TAG;
@@ -62,6 +64,7 @@ public class HomeFragment extends Fragment implements MultiTypeAdapter.OnItemCli
     public static List<String> listOfArticle;
 //    List<ArticleVideoPost> listOfVideo;
     public static List<MultiTypePost> listOfPosts = new ArrayList<>();
+    public static Map<String, Object> mapOfPosts= new HashMap<>();
     public static List<MultiTypePost> items,itemsCopy;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -131,12 +134,12 @@ public class HomeFragment extends Fragment implements MultiTypeAdapter.OnItemCli
         ((LinearLayoutManager) layoutManager).setStackFromEnd(true);
         articleRecyclerView.setLayoutManager(layoutManager);
 
-        db.collection("users")
-                .add(listOfPosts)
+        db.collection("listOfPosts")
+                .add(mapOfPosts)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
-                        Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+                        Log.d(TAG, "EocumentSnapshot added with ID: " + documentReference.getId());
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {

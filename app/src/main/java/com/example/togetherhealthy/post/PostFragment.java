@@ -140,6 +140,12 @@ public class PostFragment extends Fragment implements
                 multiTypePost.setCategory(categoryName);
                 multiTypePost.setVoteCount(0);
                 HomeFragment.listOfPosts.add(multiTypePost);
+
+                HomeFragment.mapOfPosts.put("category", categoryName);
+                HomeFragment.mapOfPosts.put("article", posText.getText().toString());
+                HomeFragment.mapOfPosts.put("url_video", uriVideo);
+                HomeFragment.mapOfPosts.put("title", titleText.getText().toString());
+
                 Toast.makeText(getActivity(),"Tulisan anda berhasil dipos." , Toast.LENGTH_LONG).show();
                 moveToHomeFragment();
             }
