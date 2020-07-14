@@ -13,6 +13,8 @@
             android:id="@+id/top_cardview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
             android:orientation="horizontal">
 
 
@@ -29,6 +31,8 @@
                 android:id="@+id/kategori_dan_user"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
                 android:paddingBottom="10dp"
                 android:paddingTop="5dp"
                 android:orientation="vertical">
@@ -59,7 +63,10 @@
             <TextView
                 android:id="@+id/tv_article"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:textSize="18dp"/>
 
             <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
                 android:id="@+id/youtube_player_view"
@@ -90,7 +97,7 @@
             <TextView
                 android:id="@+id/count_vote"
                 android:layout_width="@dimen/card_icon_bottom"
-                android:text="732"
+                android:text="0"
                 android:layout_height="@dimen/card_icon_bottom"/>
 
             <Button
@@ -108,7 +115,7 @@
             <TextView
                 android:id="@+id/count_comment"
                 android:layout_width="@dimen/card_icon_bottom"
-                android:text="7"
+                android:text="0"
                 android:layout_height="@dimen/card_icon_bottom"/>
 
             <Button

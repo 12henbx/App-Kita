@@ -85,7 +85,7 @@
             <TextView
                 android:id="@+id/count_vote"
                 android:layout_width="@dimen/card_icon_bottom"
-                android:text="732"
+                android:text="0"
                 android:layout_height="@dimen/card_icon_bottom"/>
 
             <Button
@@ -103,7 +103,7 @@
             <TextView
                 android:id="@+id/count_comment"
                 android:layout_width="@dimen/card_icon_bottom"
-                android:text="7"
+                android:text="0"
                 android:layout_height="@dimen/card_icon_bottom"/>
 
             <Button

@@ -13,6 +13,8 @@
             android:id="@+id/top_cardview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
             android:orientation="horizontal">
 
 
@@ -52,12 +54,15 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/tv_article"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="wrap_content"
+                android:textSize="18dp"/>
 
             <ImageView
                 android:id="@+id/image_post"
@@ -85,7 +90,7 @@
             <TextView
                 android:id="@+id/count_vote"
                 android:layout_width="@dimen/card_icon_bottom"
-                android:text="732"
+                android:text="0"
                 android:layout_height="@dimen/card_icon_bottom"/>
 
             <Button
@@ -103,7 +108,7 @@
             <TextView
                 android:id="@+id/count_comment"
                 android:layout_width="@dimen/card_icon_bottom"
-                android:text="7"
+                android:text="0"
                 android:layout_height="@dimen/card_icon_bottom"/>
 
             <Button

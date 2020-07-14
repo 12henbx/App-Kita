@@ -18,29 +18,30 @@ import com.example.togetherhealthy.notifications.NotificationsViewModel;
 import java.util.List;
 
 public class ArticlePostAdapter extends RecyclerView.Adapter<ArticlePostAdapter.ArticlePostViewHolder> {
-    private final List<ArticlePost> dataArticle;
-
+    private final List<MultiTypePost> dataArticle;
 
     public static class ArticlePostViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
-        public TextView textViewArticle,count;
+        public TextView textViewArticle,textCategory, textTitle;
         public Button btnUpVote,btnDownVote;
         public ArticlePostViewHolder(View itemView) {
             super(itemView);
             textViewArticle = (TextView)itemView.findViewById(R.id.tv_article);
-            count = itemView.findViewById(R.id.count_vote);
+            textCategory = itemView.findViewById(R.id.kategori);
+            textTitle = itemView.findViewById(R.id.tv_title);
             btnUpVote = itemView.findViewById(R.id.up_vote_icon);
             btnDownVote = itemView.findViewById(R.id.down_vote_icon);
         }
 
         void setArticle(MultiTypePost multiTypePost) {
             textViewArticle.setText(multiTypePost.getArticle());
-            count.setText(multiTypePost.getVoteCount());
+            textCategory.setText("r/" + multiTypePost.getCategory());
+            textTitle.setText(multiTypePost.getTitle());
         }
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public ArticlePostAdapter(List<ArticlePost> myDataset) {
+    public ArticlePostAdapter(List<MultiTypePost> myDataset) {
         dataArticle = myDataset;
     }
 
@@ -59,6 +60,7 @@ public class ArticlePostAdapter extends RecyclerView.Adapter<ArticlePostAdapter.
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         holder.textViewArticle.setText(dataArticle.get(position).getArticle());
+        holder.textTitle.setText(dataArticle.get(position).getTitle());
 
     }
 

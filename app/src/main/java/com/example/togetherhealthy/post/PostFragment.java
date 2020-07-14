@@ -108,7 +108,7 @@ public class PostFragment extends Fragment implements
             public void onClick(View view) {
                 MultiTypePost multiTypePost = new MultiTypePost();
 
-                multiTypePost.setUsername(titleText.getText().toString());
+                multiTypePost.setTitle(titleText.getText().toString());
                 multiTypePost.setArticle(posText.getText().toString());
                 multiTypePost.setUrl_photo(uriImage);
                 multiTypePost.setUrl_video(uriVideo);

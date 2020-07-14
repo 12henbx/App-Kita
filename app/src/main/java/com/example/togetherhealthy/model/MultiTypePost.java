@@ -4,6 +4,7 @@ import android.net.Uri;
 
 public class MultiTypePost {
     private String username;
+    private String title;
     private String article;
     private Uri url_photo;
     private String url_video;
@@ -57,5 +58,13 @@ public class MultiTypePost {
 
     public void setVoteCount(int voteCount) {
         this.voteCount = voteCount;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }

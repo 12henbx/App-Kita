@@ -29,6 +29,8 @@ public class MultiTypeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     private Context context;
     private ArrayList<MultiTypePost> multiTypePostArrayList;
 
+    public interface OnItemClicked{ void onItemClick(int position); }
+
     public MultiTypeAdapter(Context context, ArrayList<MultiTypePost> multiTypePostArrayList){
         this.context = context;
         this.multiTypePostArrayList = multiTypePostArrayList;
@@ -58,7 +60,7 @@ public class MultiTypeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     @Override
     public int getItemViewType(int position) {
-        Log.d(TAG, "getItemViewType: " + multiTypePostArrayList.get(position).getUrl_photo());
+        Log.d(TAG, "getItemViewType: gettitle" + multiTypePostArrayList.get(position).getTitle());
         if (multiTypePostArrayList.get(position).getUrl_photo() == null && TextUtils.isEmpty(multiTypePostArrayList.get(position).getUrl_video())) {
             return TYPE_ARTICLE;
         } else if (TextUtils.isEmpty(multiTypePostArrayList.get(position).getUrl_video())){
@@ -90,3 +92,5 @@ public class MultiTypeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         return multiTypePostArrayList.size();
     }
 }
+
+
