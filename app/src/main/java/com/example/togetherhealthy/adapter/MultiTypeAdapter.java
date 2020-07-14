@@ -6,16 +6,19 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.togetherhealthy.R;
+import com.example.togetherhealthy.home.BtnClickListener;
 import com.example.togetherhealthy.model.MultiTypePost;
 
 import java.util.ArrayList;
 
 import static androidx.constraintlayout.widget.Constraints.TAG;
+
 
 public class MultiTypeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static int TYPE_ARTICLE = 1;
@@ -26,7 +29,7 @@ public class MultiTypeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     private Context context;
     private ArrayList<MultiTypePost> multiTypePostArrayList;
 
-    public MultiTypeAdapter(Context context, ArrayList<MultiTypePost> multiTypePostArrayList ){
+    public MultiTypeAdapter(Context context, ArrayList<MultiTypePost> multiTypePostArrayList){
         this.context = context;
         this.multiTypePostArrayList = multiTypePostArrayList;
     }
@@ -34,7 +37,8 @@ public class MultiTypeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view;
+        final View view;
+
         if (viewType == TYPE_ARTICLE) { // for call layout
             view = LayoutInflater.from(context).inflate(R.layout.item_article, parent, false);
             return new ArticlePostAdapter.ArticlePostViewHolder(view);
@@ -69,7 +73,6 @@ public class MultiTypeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        System.out.println("cek item" + getItemViewType(position));
         Log.d(TAG, "onBindViewHolder: " + getItemViewType(position));
         if (getItemViewType(position) == TYPE_ARTICLE) {
             ((ArticlePostAdapter.ArticlePostViewHolder) holder).setArticle(multiTypePostArrayList.get(position));

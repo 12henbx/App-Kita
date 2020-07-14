@@ -18,22 +18,24 @@ import com.example.togetherhealthy.notifications.NotificationsViewModel;
 import java.util.List;
 
 public class ArticlePostAdapter extends RecyclerView.Adapter<ArticlePostAdapter.ArticlePostViewHolder> {
-    private List<ArticlePost> dataArticle;
+    private final List<ArticlePost> dataArticle;
 
 
     public static class ArticlePostViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
-        public TextView textViewArticle;
+        public TextView textViewArticle,count;
         public Button btnUpVote,btnDownVote;
         public ArticlePostViewHolder(View itemView) {
             super(itemView);
             textViewArticle = (TextView)itemView.findViewById(R.id.tv_article);
+            count = itemView.findViewById(R.id.count_vote);
             btnUpVote = itemView.findViewById(R.id.up_vote_icon);
             btnDownVote = itemView.findViewById(R.id.down_vote_icon);
         }
 
         void setArticle(MultiTypePost multiTypePost) {
             textViewArticle.setText(multiTypePost.getArticle());
+            count.setText(multiTypePost.getVoteCount());
         }
     }
 

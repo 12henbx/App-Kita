@@ -113,6 +113,7 @@ public class PostFragment extends Fragment implements
                 multiTypePost.setUrl_photo(uriImage);
                 multiTypePost.setUrl_video(uriVideo);
                 multiTypePost.setCategory(categoryName);
+                multiTypePost.setVoteCount(0);
                 HomeFragment.listOfPosts.add(multiTypePost);
                 Toast.makeText(getActivity(),"Tulisan anda berhasil dipos." , Toast.LENGTH_LONG).show();
                 moveToHomeFragment();
