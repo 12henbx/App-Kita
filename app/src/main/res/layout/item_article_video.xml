@@ -66,6 +66,7 @@
                 android:layout_height="wrap_content"
                 android:paddingStart="10dp"
                 android:paddingEnd="10dp"
+                android:textStyle="bold"
                 android:textSize="18dp"/>
 
             <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
@@ -73,7 +74,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:autoPlay="true"
-                app:videoId="l2mI4vL95kU"
+                app:videoId="MSDNZwtQlXw"
                 app:showFullScreenButton="false" />
 
         </LinearLayout>

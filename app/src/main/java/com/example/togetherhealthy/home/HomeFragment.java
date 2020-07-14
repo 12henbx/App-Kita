@@ -30,8 +30,12 @@ import com.example.togetherhealthy.model.MultiTypePost;
 import com.example.togetherhealthy.model.StreamPost;
 import com.example.togetherhealthy.notifications.NotificationsFragment;
 import com.example.togetherhealthy.notifications.NotificationsViewModel;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
@@ -39,6 +43,8 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTube
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
+
+import static android.content.ContentValues.TAG;
 
 public class HomeFragment extends Fragment implements MultiTypeAdapter.OnItemClicked {
 
@@ -60,6 +66,7 @@ public class HomeFragment extends Fragment implements MultiTypeAdapter.OnItemCli
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
         homeViewModel =
                 ViewModelProviders.of(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
@@ -100,13 +107,13 @@ public class HomeFragment extends Fragment implements MultiTypeAdapter.OnItemCli
 //        listOfVideo = new ArrayList<ArticleVideoPost>();
 //        listOfPosts = new ArrayList<>();
 
-        for (int i =0 ; i < 3 ; i++){
-            MultiTypePost article = new MultiTypePost();
-
-            article.setUsername(String.valueOf(i));
-            article.setArticle(dummyArticle + i);
-            listOfPosts.add(article);
-        }
+//        for (int i =0 ; i < 3 ; i++){
+//            MultiTypePost article = new MultiTypePost();
+//
+//            article.setUsername(String.valueOf(i));
+//            article.setArticle(dummyArticle + i);
+//            listOfPosts.add(article);
+//        }
 
 //        for (int i =0 ; i < 2 ; i++){
 //            MultiTypePost articleVideoPost = new MultiTypePost();
@@ -123,6 +130,21 @@ public class HomeFragment extends Fragment implements MultiTypeAdapter.OnItemCli
         ((LinearLayoutManager) layoutManager).setReverseLayout(true);
         ((LinearLayoutManager) layoutManager).setStackFromEnd(true);
         articleRecyclerView.setLayoutManager(layoutManager);
+
+        db.collection("users")
+                .add(listOfPosts)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(TAG, "Error adding document", e);
+                    }
+                });
 
         mAdapter = new MultiTypeAdapter(getContext(), (ArrayList<MultiTypePost>) listOfPosts);
         articleRecyclerView.setAdapter(mAdapter);

@@ -11,8 +11,10 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.example.togetherhealthy.post.IOnBackPressed;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MainActivity extends AppCompatActivity {
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -109,7 +109,10 @@
         android:background="@null"
         android:gravity="top|left"
         android:hint="Tulisan pos anda"
-        android:inputType="text"
+        android:inputType="textCapSentences|textMultiLine"
+        android:maxLines ="6"
+        android:maxLength ="2000"
+        android:singleLine="false"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/border_bottom_3" />
 

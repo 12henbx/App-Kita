@@ -19,7 +19,7 @@
             android:id="@+id/roundedImageView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@mipmap/ic_launcher_round"
+            android:src="@drawable/profile_min"
             android:scaleType="centerCrop"
             />
     </androidx.cardview.widget.CardView>
@@ -41,6 +41,15 @@
         android:layout_height="100px"
         android:layout_gravity="center_horizontal"
         android:text="Points: 100"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:layout_width="550px"
+        android:layout_height="100px"
+        android:layout_gravity="center_horizontal"
+        android:text="Faskes: II"
         android:textAlignment="center"
         android:textSize="20dp"
         android:layout_marginBottom="10dp"/>
@@ -84,7 +93,7 @@
                 android:layout_width="300dp"
                 android:layout_height="30dp"
                 android:layout_gravity="center_horizontal"
-                android:text="Tips Mencuci buah"
+                android:text="Cara Memeriksa Status Kartu BPJS Kesehatan"
                 android:textSize="20dp"
                 android:textStyle="bold"
                 />
@@ -93,9 +102,9 @@
                 android:layout_width="300dp"
                 android:layout_height="193dp"
                 android:layout_gravity="center_horizontal"
-                android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+                android:text="Ada beberapa cara yang bisa Anda lakukan untuk cek status BPJS Kesehatan. Anda tinggal pilih yang dirasa paling sesuai dengan kemauan dan kemampuan pribadi.\n1. Website\n
+Setelah melakukan pendaftaran, kartu akan.....aktif dalam 14 hari. Untuk memastikannya, ikuti langkah-langkah berikut ini dengan mengakses website BPJS Kesehatan."
                 android:textSize="20dp"
-                android:textAlignment="viewStart"
                 android:layout_marginBottom="25dp"/>
 
             <androidx.cardview.widget.CardView
@@ -105,10 +114,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="View More"
-                    android:textSize="25dp"
+                    android:textSize="16dp"
                     android:layout_gravity="center_vertical"
                     android:textAlignment="center"
-                    android:textColor="#000"
+                    android:textStyle="bold"
+                    android:textColor="#AAAAAA"
                     tools:ignore="RtlCompat" />
             </androidx.cardview.widget.CardView>
         </LinearLayout>

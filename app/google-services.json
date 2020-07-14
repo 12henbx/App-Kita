@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "994562730482",
+    "firebase_url": "https://bpjshackathon2020.firebaseio.com",
+    "project_id": "bpjshackathon2020",
+    "storage_bucket": "bpjshackathon2020.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:994562730482:android:50ea9fd29cfac20fcae36b",
+        "android_client_info": {
+          "package_name": "com.example.togetherhealthy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "994562730482-kp6ls0q1aaqc0vauvqmvfc3o5v9veei5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.togetherhealthy",
+            "certificate_hash": "d39bbc91b2810f70ff3521d835750751b1d85e77"
+          }
+        },
+        {
+          "client_id": "994562730482-u0otaclhhi0htv9243n5k8g1cqkn6pv9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7A4NC0BNPqBxk794IihjYFxRTrwPQl7Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "994562730482-u0otaclhhi0htv9243n5k8g1cqkn6pv9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
